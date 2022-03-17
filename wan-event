@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. /jffs/scripts/credentials.sh
+. /jffs/scripts/pushover_creds.sh
 
 push_message(){
     echo "Pushover Init"

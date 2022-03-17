@@ -2,7 +2,7 @@
 
 VERS=$(nvram get webs_state_info)
 
-. /jffs/scripts/credentials.sh
+. /jffs/scripts/pushover_creds.sh
 
 push_message () {
 	echo "Pushover Init"

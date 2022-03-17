@@ -4,7 +4,7 @@ VER="1.0"
 
 ENV_VARS=$(env)
 
-. /jffs/scripts/credentials.sh
+. /jffs/scripts/pushover_creds.sh
 
 push_message(){
     echo "Pushover Init"
