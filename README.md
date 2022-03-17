@@ -10,21 +10,21 @@ This scripts are targeted to be used on Asus routers running the modified [Asusw
 
 # Push Over
 
-[Pushover](https://pushover.net/) is a service that enables to easily send Push Notifications to devices, I like it because by paying just once in a lifetime ($4.99 USD as of 2020) I get 7.500 free push notifications a month, more than enough for my personal needs. After installing the App on your smartphone, SSH in your router and create the file `/jffs/scripts/credentials.sh` using nano or another tool with the following content:
+[Pushover](https://pushover.net/) is a service that enables to easily send Push Notifications to devices, I like it because by paying just once in a lifetime ($4.99 USD as of 2020) I get 7.500 free push notifications a month, more than enough for my personal needs. After installing the App on your smartphone, SSH in your router and create the file `/jffs/scripts/pushover_creds.sh` using nano or another tool with the following content:
 
 ```Shell
 #!/bin/sh
 
 export pushover_token="<Your pushover token goes here>"
-export pushover_user="<Your pushover user goes here>"
+export pushover_user="<Your pushover userID goes here>"
 ```
 
-If you are unsure as to how to use nano or a similar tool to create your `credentials.sh` file, you can run the following commands to create it:
+If you are unsure as to how to use nano or a similar tool to create your `pushover_creds.sh` file, you can run the following commands to create it:
 
 ```Shell
-echo '#!/bin/sh' >> /jffs/scripts/credentials.sh
-echo 'export pushover_token="<Your pushover token goes here>"' >> /jffs/scripts/credentials.sh
-echo 'export pushover_user="<Your pushover user goes here>"' >> /jffs/scripts/credentials.sh
+echo '#!/bin/sh' >> /jffs/scripts/pushover_creds.sh
+echo 'export pushover_token="<Your pushover token goes here>"' >> /jffs/scripts/pushover_creds.sh
+echo 'export pushover_user="<Your pushover userID goes here>"' >> /jffs/scripts/pushover_creds.sh
 ```
 
 # Get notified about firmware updates
@@ -32,7 +32,7 @@ echo 'export pushover_user="<Your pushover user goes here>"' >> /jffs/scripts/cr
 It is very important to keep your router up to date with the latest firmware, this script will send you push notifications every time there's a new release. This script runs every 48 hrs.
 
 ```Shell
-/usr/sbin/curl --retry 3 "https://raw.githubusercontent.com/ignaciohermosillacornejo/Asuswrt-Merlin-Scripts/master/update-notification" -o "/jffs/scripts/update-notification" && chmod 755 /jffs/scripts/update-notification && sh /jffs/scripts/update-notification
+/usr/sbin/curl --retry 3 "https://raw.githubusercontent.com/farmerbean/Asuswrt-Merlin-Scripts/master/update-notification" -o "/jffs/scripts/update-notification" && chmod 755 /jffs/scripts/update-notification && sh /jffs/scripts/update-notification
 ```
 
 After running this command, you should see a push notification like the following on your smartphone
@@ -42,10 +42,10 @@ After running this command, you should see a push notification like the followin
 
 # Get notified when your router connects to the internet (WAN)
 
-Sometimes your router disconects from the internet and you might not realize that, I like to have this notification as a record of all the times there's a problem with my ISP provider so that I can complain, record in hand.
+Sometimes your router disconnects from the internet and you might not realize that, I like to have this notification as a record of all the times there's a problem with my ISP provider so that I can complain, record in hand.
 
 ```Shell
-/usr/sbin/curl --retry 3 "https://raw.githubusercontent.com/ignaciohermosillacornejo/Asuswrt-Merlin-Scripts/master/wan-event" -o "/jffs/scripts/wan-event" && chmod 755 /jffs/scripts/wan-event && sh /jffs/scripts/wan-event 0 connected
+/usr/sbin/curl --retry 3 "https://raw.githubusercontent.com/farmerbean/Asuswrt-Merlin-Scripts/master/wan-event" -o "/jffs/scripts/wan-event" && chmod 755 /jffs/scripts/wan-event && sh /jffs/scripts/wan-event 0 connected
 ```
 
 After running this command, you should see a push notification like the following on your smartphone
@@ -54,11 +54,11 @@ After running this command, you should see a push notification like the followin
 
 # Get notified when someone connects to your VPN Server
 
-One of my favourite things about my Asus Router is that it has the capability of running an OpenVPN Server, allowing me, my friends and I to connect to the internet safely from public wifi and have more privacy knowing that I'm not relying on any public VPN services or paying for them. I also know that I get really fast bandwith and fantastic ping times while state side.
+One of my favourite things about my Asus Router is that it has the capability of running an OpenVPN Server, allowing me, my friends and I to connect to the internet safely from public wifi and have more privacy knowing that I'm not relying on any public VPN services or paying for them. I also know that I get really fast bandwidth and fantastic ping times while state side.
 
 
 ```Shell
-/usr/sbin/curl --retry 3 "https://raw.githubusercontent.com/ignaciohermosillacornejo/Asuswrt-Merlin-Scripts/master/vpn_client_connect.sh" -o "/jffs/scripts/vpn_client_connect.sh" && chmod 755 /jffs/scripts/vpn_client_connect.sh
+/usr/sbin/curl --retry 3 "https://raw.githubusercontent.com/farmerbean/Asuswrt-Merlin-Scripts/master/vpn_client_connect.sh" -o "/jffs/scripts/vpn_client_connect.sh" && chmod 755 /jffs/scripts/vpn_client_connect.sh
 ```
 
 After adding the script, go to VPN -> VPN Server -> VPN Details (change to advanced) and add this to the Custom Configuration box at the end:
