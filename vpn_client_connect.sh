@@ -7,7 +7,7 @@ ENV_VARS=$(env)
 . /jffs/scripts/credentials.sh
 
 push_message(){
-    echo "starting push"
+    echo "Pushover Init"
     curl -s \
           --form-string "token=$pushover_token"\
           --form-string "user=$pushover_user"\

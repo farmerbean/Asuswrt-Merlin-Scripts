@@ -3,11 +3,11 @@
 . /jffs/scripts/credentials.sh
 
 push_message(){
-    echo "starting push"
+    echo "Pushover Init"
     curl -s \
           --form-string "token=$pushover_token"\
           --form-string "user=$pushover_user"\
-          --form-string "message=Home just connected to the internet"\
+          --form-string "message=WAN Reconnect Successful"\
           https://api.pushover.net/1/messages.json
 }
 

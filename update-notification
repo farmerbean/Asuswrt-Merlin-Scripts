@@ -5,11 +5,11 @@ VERS=$(nvram get webs_state_info)
 . /jffs/scripts/credentials.sh
 
 push_message () {
-	echo "starting push"
+	echo "Pushover Init"
 	curl -s \
 		 --form-string "token=$pushover_token" \
 		 --form-string "user=$pushover_user" \
-		 --form-string "message=Just letting my self know that your router needs to be updated to version $VERS" \
+		 --form-string "message=Firmware Update: $VERS" \
 		https://api.pushover.net/1/messages.json
 }
 push_message
